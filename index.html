@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光岡昭典 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>光岡昭典 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社リィ（Lii）</a>
+  <a href="#k2">2. 株式会社スマテン</a>
+  <a href="#k3">3. 株式会社Grand Central</a>
+  <a href="#k4">4. 株式会社SkyDrive</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">CFO候補</span><span class="badge badge-blue">未上場・IPO準備中</span></div>
+  <div class="co-name">株式会社リィ（Lii）</div>
+  <div class="co-url"><a href="https://liistyle.com/" target="_blank">https://liistyle.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>愛知県名古屋市昭和区御器所通3-8-1 御器所セントラルビル3A</td></tr><tr><th>設立</th><td>2018年11月1日</td></tr><tr><th>従業員数</th><td>220〜230名</td></tr><tr><th>上場区分</th><td>未上場（IPO準備中）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備中</li><li>社長リレーション</li><li>過去入社実績アリ</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2018年11月1日設立。主に児童発達支援／放課後等デイサービス（幼児向け運動支援）を手がける「Lii sports studio」の運営を核に、キッズ向けパーソナルトレーニング、フィットネス・接骨院事業、クリエイティブ事業、さらには採用支援／組織開発支援といった領域まで手広く扱っています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2018年11月1日設立。主に児童発達支援／放課後等デイサービス（幼児向け運動支援）を手がける「Lii sports studio」の運営を核に、キッズ向けパーソナルトレーニング、フィットネス・接骨院事業、クリエイティブ事業、さらには採用支援／組織開発支援といった領域まで手広く扱っています。「良質な運動機会を創造し、ドキドキがあふれる毎日をつくる」をテーマに、運動を通じて"運動が苦手な人"や"運動習慣のない人"にも、気軽に体を動かす機会を提供することを目指しています。</p><p>「Lii sports studio」は、日本各地（愛知、神奈川、兵庫、大阪、静岡、東京、沖縄など）に展開。2025年9月には、学習と運動を掛け合わせた新形態の学習塾「Lii learning studio（リィ ラーニングスタジオ）」を横浜市にオープン。これにより「運動支援 → 教育領域」への事業拡張に乗り出しています。また、成人向けのフィットネス・接骨院事業を買収・統合する形で参入し、子どもだけでなく大人も含めた幅広い年齢層への運動機会提供を視野に入れています。</p><p>デジタルスポーツ療育を活用した独自の児童支援に加え、教育や成人向けサービスまで展開することで、子どもから大人まで対応できる成長支援のかたちを実現。2025年には「中部経済産業局長賞」も受賞しており、福祉×スポーツ×テクノロジーを組み合わせた取り組みが、各方面から注目を集めています。</p><p><strong>会社のミッション</strong><br>株式会社リィは「運動を通じて心身の健康を取り戻す社会の実現」を目指し、特に現代社会における身体活動の喪失に課題意識を持って設立された。生活が便利になった一方で、心身の不調やメンタルクリニックの増加などの社会問題に着目し、運動の機会を提供することで人々の生活にリズムと豊かさを取り戻すことを使命としている。</p><p><strong>主要事業（4本柱）</strong></p><ul><li><strong>リースポーツ事業（主力）</strong>：発達障害やグレーゾーンのある子ども向けの運動支援施設を全国展開。現在約40店舗を運営・準備中。2030年には200店舗までの拡大を目指す。</li><li><strong>ハルフィット東京（海外事業）</strong>：インドネシア・ジャカルタで20代女性を中心にしたリラクゼーション・フィットネス施設を運営（2025年4月オープン）。</li><li><strong>リーラーニングスタジオ（新規事業）</strong>：運動で心拍を上げ、集中力を高めたうえで学習するという独自メソッドの学習塾。2025年8月にサービス提供開始。</li><li><strong>パーソナルジム事業（M&A事業）</strong>：2年前にM&Aで取得したジム事業。現在はPMI（ポスト・マージャー・インテグレーション）および最適化フェーズ。</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 CFO候補（最高財務責任者）</div>
+          <div class="job-preview">IPOに向けた財務戦略・資本政策の策定と実行、管理部門全般の統括</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>現在は、業務委託の財務顧問がCFO的な役割を担っていますが、IPOに向け内製化された経営体制が急務となっています。このポジションには、いわゆる「守り（管理部長的な役割）」と「攻め（資金調達やM&Aを通じた事業加速）」の両面が求められます。</p><p><strong>想定される業務内容</strong></p><ul><li>IPOに向けた財務戦略、資本政策の策定と実行</li><li>新規事業（第二、第三の矢）の育成に向けたM&Aやエクイティ調達（VC含む）の推進</li><li>労務、経理、コンプライアンスを含む管理部門全般の統括</li><li>海外展開の業務</li></ul>
+        <div class="meta-pills"><span class="pill">📍 愛知県</span><span class="pill">🏠 基本出社</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://liistyle.com/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://drive.google.com/file/d/1JGeb-4tsKr1Mo0hOtdzwNBeOckw75UFr/view?usp=drivesdk" target="_blank">📊 統合報告書</a><a class="lbtn lbtn-out" href="https://note.com/ayumi_ll/n/nc70b4a7aa747" target="_blank">📝 代表note</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">経営企画部長</span><span class="badge badge-blue">未上場・IPO準備中</span></div>
+  <div class="co-name">株式会社スマテン</div>
+  <div class="co-url"><a href="https://corp.sumaten.co/" target="_blank">https://corp.sumaten.co/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>愛知県名古屋市中区栄1-16-15伏見DOビル7F</td></tr><tr><th>従業員数</th><td>約20名</td></tr><tr><th>上場区分</th><td>未上場（IPO準備中）</td></tr><tr><th>資金調達</th><td>累計6億円</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">建物の消防設備点検業務に特化したプラットフォーム「スマテン」を運営しています。「スマテン」は、消防設備点検管理業務をWeb上で完結できる利用料無料のツールで、業種を問わず建物の管理をされているロードサイド店舗経営会社を始め宿泊事業運営会社、福祉・介護施設運営会社や不動産管理会社に利用されています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>建物の消防設備点検業務に特化したプラットフォーム「スマテン」を運営しています。「スマテン」は、消防設備点検管理業務をWeb上で完結できる利用料無料のツールで、業種を問わず建物の管理をされているロードサイド店舗経営会社を始め宿泊事業運営会社、福祉・介護施設運営会社や不動産管理会社に利用されています。</p><p>全国各所で現在約1000社（物件登録数1万件）、800名のスマテンパートナー点検事業者と契約、全国展開を実現しています。近年ではココ壱番屋（全国）やマクドナルド（直営店）も導入、急速に登録物件が増加しています。</p><p><strong>ビジョン</strong><br>法令点検にも関わらず現状49.8%にとどまっている消防設備点検の実施率を100%にすること。</p><p>本社名古屋の他に東京（池袋）にも拠点があり、社員は20名程。様々な企業との業務提携も進み、累計資金調達は６億円、数年以内のＩＰＯを目指しています。</p><p><strong>代表取締役CEO　都築啓一氏</strong><br>大学在学中に飲食店を開業。2011年の東日本大震災の復興支援をきっかけに、自然エネルギーを普及させたいという思いから太陽光発電所の販売会社を設立など、複数社の代表取締役を歴任。防災・減災領域に社会課題を感じ、消防設備点検の会社を設立したのち、課題解決のためには旧態依然であるこの防災・消防業界をアップデートする必要を感じ株式会社スマテンを設立、代表取締役に就任。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 経営企画部長</div>
+          <div class="job-preview">IPO準備中企業での経営企画部門のマネジメント</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.sumaten.co/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://www.nikkei.com/article/DGXZQOFD0612H0W4A200C2000000/" target="_blank">📰 日経新聞記事</a><a class="lbtn lbtn-out" href="https://careerpark-agent.jp/interview/234-2" target="_blank">📝 CEO インタビュー</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">経営戦略</span><span class="badge badge-blue">未上場・IPO準備中</span></div>
+  <div class="co-name">株式会社Grand Central</div>
+  <div class="co-url"><a href="https://grandcentral.jp/" target="_blank">https://grandcentral.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区三田3丁目5-27 住友不動産東京三田サウスタワー15F</td></tr><tr><th>設立</th><td>2021年</td></tr><tr><th>従業員数</th><td>約200名</td></tr><tr><th>上場区分</th><td>未上場（2027-2028年IPO予定）</td></tr><tr><th>売上</th><td>第3期13.7億円</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2021年に創業、1期目に年商2億円を達成し、2期目の年商目標9億円を掲げる急成長スタートアップ企業です。成長速度は驚異的で、第5期目を迎え、正社員数は約200名規模にまで拡大。東京・名古屋・大阪の3拠点で展開しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2021年に創業、1期目に年商2億円を達成し、2期目の年商目標9億円を掲げる急成長スタートアップ企業です。成長速度は驚異的で、第5期目を迎え、正社員数は約200名規模にまで拡大。東京・名古屋・大阪の3拠点で展開しています。</p><p>" セールスの常識に、革命を "というミッションのもと、「セールスコンサルティング」という新事業領域を確立し、新時代のセールスの在り方を提唱しています。領域は、営業戦略の策定、新規事業のテストセールス、拡販体制の強化など。支援業界はSaaS、Webツール、教育、HR、製造業など多岐に渡り、その最大の武器は「93.8%」という圧倒的なKPI達成率です。</p><p><strong>主要クライアント</strong><br>株式会社朝日新聞社・株式会社NTTドコモ・株式会社マネーフォワード・ヤフー株式会社・コニカミノルタ株式会社・ディップ株式会社などスタートアップ～大手上場企業など。</p><p>ベイカレントやアクセンチュアといった総合コンサルファームが「営業の実働」までは踏み込まない領域に対し、泥臭い実行力と戦略的思考を兼ね備えた「営業特化型コンサルティングファーム」としての地位を確立しています。</p><p><strong>株主構成</strong><br>UFJやみずほといった大手金融機関に加え、セールスフォース、そして個人のエンジェル投資家として楽天の三木谷氏、ビズリーチの南氏、ロッテの玉塚氏といった日本を代表する経営者たちが名を連ねています。現在、2027〜2028年のIPOを見据え、10歩先、100歩先の組織課題を見通せる、経営視点を持ったリーダーを求めています。</p><p><strong>代表取締役CEO　北口拓実氏</strong><br>1995年生まれ、大阪府出身。立命館大学経営学部を卒業。新卒で株式会社キーエンスに入社し、法人向けコンサルティングセールスに従事し、史上最年少売上レコードを更新。全社ランキング１位を含め、社内表彰を多数受賞。その後、2021年に株式会社Grand Centralを創業し、代表取締役CEOに就任。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 経営戦略</div>
+          <div class="job-preview">組織全体の最適化、各事業部の支援及びパフォーマンスの最大化、中長期的な経営計画の策定</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>募集背景</strong><br>2021年創業、1期目に年商2億、2期目年商6.1億、3期目年商13.7億円という超急成長コンサルティング企業。各業界のトップセールスやスペシャリストを結集させ、"セールスの常識に、革命を"というミッションのもと、「セールスコンサルティング」という新事業領域を確立し、先駆者として新時代のセールスの在り方を証明しております。今後さらなる事業拡大を見据え、新たなメンバーを募集しております。</p><p><strong>業務内容</strong><br>当社の経営企画として、組織全体の最適化、各事業部の支援及びパフォーマンスの最大化、中長期的な経営計画の策定、戦略立案業務などをご担当いただきます。</p><ul><li>中期経営計画・月次事業計画の策定</li><li>予算策定/KPIの設定及びモニタリング</li><li>経営課題の特定と解決に向けた施策の考案並びに解決に向けたプロジェクトの推進</li><li>事業部の戦略・方針策定及び推進支援</li><li>事業部を横断した資本や人材の最適化や接続部分の干渉</li><li>予実管理、差異分析（事業部全体の数字集計／管理）</li></ul><p><strong>期待すること</strong></p><ul><li>組織を横断したPJの推進や、各事業部のパフォーマンス最大化を図る上での事業部支援</li><li>グレードの高いレイヤーや多様なメンバーを巻き込む上で、円滑なコミュニケーションと組織統率力</li><li>会社や事業ビジョンに共感し経営層と同じ視座で会社全体を俯瞰し、経営課題を特定し解決に向けた施策の考案</li><li>密な中期経営計画・月次事業計画の策定予算策定やKPIの設定及びモニタリング方法の考案</li></ul><p><span class='tag tag-must'>MUST</span> 事業会社での経営企画部門のご経験1年以上</p><p><span class='tag tag-want'>WANT</span> 戦略コンサルのご経験、事業会社での管理会計経験</p><p><strong>求める人物像</strong><br>論理的思考力・構造化力、コミュニケーション力</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://grandcentral.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://drive.google.com/file/d/17txmZqbpKIJEm1vM2YmMHHBVTFbCJmBk/view?usp=sharing" target="_blank">📊 会社資料</a><a class="lbtn lbtn-out" href="https://grandcentral.jp/client-voice/" target="_blank">👥 お客様の声</a></div>
+</div></div>
+
+<div class="card" id="k4"><div class="card-inner">
+  <div class="badges"><span class="badge">エアモビリティ</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社SkyDrive</div>
+  <div class="co-url"><a href="https://skydrive2020.com/" target="_blank">https://skydrive2020.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>愛知県豊田市挙母町2-1-1</td></tr><tr><th>設立</th><td>2018年7月</td></tr><tr><th>上場区分</th><td>未上場</td></tr><tr><th>資金調達</th><td>累計430億円規模</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「100年に一度のモビリティ革命を牽引する」を掲げ、"空飛ぶクルマ（eVTOL）"の開発・製造・販売を手掛ける、日本発の次世代エアモビリティ企業です。航空機・ドローン・自動車領域のエンジニア有志によるプロジェクト「CARTIVATOR」を原点に、2018年7月に創業。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「100年に一度のモビリティ革命を牽引する」を掲げ、"空飛ぶクルマ（eVTOL）"の開発・製造・販売を手掛ける、日本発の次世代エアモビリティ企業です。航空機・ドローン・自動車領域のエンジニア有志によるプロジェクト「CARTIVATOR」を原点に、2018年7月に創業。現在は、「空飛ぶクルマ」と「物流ドローン」の社会実装を目指し、機体開発だけでなく、運航・インフラ・制度設計まで一気通貫で推進しています。</p><p>同社は2019年、日本国内で初となる有人飛行試験に成功。現在は、3人乗りeVTOL機「SKYDRIVE（SD-05）」の型式証明取得に向け、国土交通省航空局（JCAB）および米国FAAとの協議・認証プロセスを進めています。2025年大阪・関西万博では、一般公開デモフライトを実施し、日本の次世代モビリティを象徴する存在として大きな注目を集めました。</p><p>また、物流領域では最大30kg積載可能な物流ドローン「SkyLift」を展開。山間部やインフラ点検など、人手不足・物流課題を抱える現場で実運用が進んでいます。2028年の商用サービス開始を目指しており、愛知県豊田市および山口県での試験飛行も実施しています。</p><p><strong>資金調達・事業提携</strong><br>Suzuki、JR東日本、JR九州、近鉄グループなど、日本を代表する企業群と資本・業務提携を推進。2025年時点で累計調達額は430億円規模に拡大し、国内外での事業展開を加速させています。</p><p>現在は日本のみならず、米国・インド・中東・東南アジアなどグローバル展開も本格化。空の移動を"特別な体験"から"日常インフラ"へ変える挑戦を続けています。</p><p><strong>代表取締役CEO　福澤知浩 氏</strong><br>2010年東京大学工学部卒業後、トヨタ自動車株式会社にて自動車部品のグローバル調達に従事。同時に多くの現場でトヨタ生産方式を用いた改善活動を実施。2014年に『空飛ぶクルマ』の開発活動『CARTIVTOR』に参画し、現在、共同代表を務める。2017年に独立、製造業20社以上の経営コンサルティングを手掛け、2018年に株式会社SkyDriveを設立、代表取締役に就任。</p></div>
+  </div>
+  
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://skydrive2020.com/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://newspicks.com/live-movie/1690?fbclid=IwAR3uayQCXK5lMUf5Dq1ydhRStKR5pa9PmBewU9ZaTEs4IfRs8W0_qTzA0O8" target="_blank">🎥 対談動画</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが光岡昭典 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
